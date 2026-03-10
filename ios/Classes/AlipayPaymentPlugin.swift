@@ -7,7 +7,7 @@ public class AlipayPaymentPlugin: NSObject, FlutterPlugin, FlutterApplicationLif
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(
-      name: "com.weilan.alipay_payment",
+      name: "io.github.weilanwl.alipay_payment",
       binaryMessenger: registrar.messenger()
     )
     let instance = AlipayPaymentPlugin()

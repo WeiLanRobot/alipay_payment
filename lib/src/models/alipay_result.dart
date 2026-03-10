@@ -67,6 +67,9 @@ class AlipayResult {
 
   Map<String, dynamic> toMap() => toJson();
 
+  /// 状态码 int 形式（与 alipay_kit 的 resultStatus 兼容）
+  int? get resultStatusCode => int.tryParse(resultStatus);
+
   bool get isSuccess => resultStatus == '9000';
 
   bool get isCancel => resultStatus == '6001';

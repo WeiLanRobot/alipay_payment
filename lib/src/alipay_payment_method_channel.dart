@@ -18,7 +18,7 @@ class MethodChannelAlipayPayment extends AlipayPaymentPlatform {
   bool _disposed = false;
 
   @visibleForTesting
-  static const String channelName = 'com.weilan.alipay_payment';
+  static const String channelName = 'io.github.weilanwl.alipay_payment';
 
   MethodChannel get methodChannel => const MethodChannel(channelName);
 

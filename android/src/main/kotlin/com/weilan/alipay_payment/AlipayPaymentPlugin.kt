@@ -25,7 +25,7 @@ class AlipayPaymentPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     applicationContext = flutterPluginBinding.applicationContext
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.weilan.alipay_payment")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "io.github.weilanwl.alipay_payment")
     channel.setMethodCallHandler(this)
   }
 

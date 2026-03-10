@@ -4,12 +4,13 @@ Flutter 支付宝支付插件，支持 iOS、Android 平台。
 
 ## 功能
 
-- **设置支付环境**：切换正式/测试环境
-- **支付**：发起支付宝支付
-- **授权**：支付宝账号授权
-- **检测安装**：检查是否已安装支付宝客户端
-- **支付/授权结果**：统一的结果封装，含容错处理
-- **平台支持**：iOS、Android
+- **支付**：发起支付宝 App 支付
+- **授权（登录）**：支付宝账号授权，支持 `parseAuthResult()` 解析
+- **沙箱环境**：iOS/Android 均支持 `AlipayEnvironment.sandbox`
+- **检测安装**：`isAlipayInstalled()`
+- **结果返回**：`payResp()` / `authResp()` 返回 Stream，支持多监听
+- **客户端签名**：`unsafePay` / `unsafeAuth`（⚠️ 仅开发测试，生产请用服务端签名）
+- **iOS utdid/noutdid**：可配置避免与阿里系 SDK 冲突
 
 ## 安装
 
