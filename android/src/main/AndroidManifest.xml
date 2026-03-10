@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+  <queries>
+    <package android:name="com.eg.android.AlipayGphone" />
+    <package android:name="com.alipay.mobile" />
+  </queries>
+  <application>
+    <activity
+        android:name="com.alipay.sdk.app.H5PayActivity"
+        android:configChanges="orientation|keyboardHidden|navigation|screenSize|locale|keyboard|screenLayout|density|fontScale|layoutDirection|smallestScreenSize"
+        android:exported="false"
+        android:screenOrientation="behind"
+        tools:replace="android:configChanges" />
+    <activity
+        android:name="com.alipay.sdk.auth.AuthActivity"
+        android:configChanges="orientation|keyboardHidden|navigation|screenSize|locale|keyboard|screenLayout|density|fontScale|layoutDirection|smallestScreenSize"
+        android:exported="false"
+        android:screenOrientation="behind"
+        tools:replace="android:configChanges" />
+  </application>
+</manifest>

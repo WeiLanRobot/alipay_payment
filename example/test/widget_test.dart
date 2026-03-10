@@ -5,23 +5,45 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'package:alipay_payment/alipay_payment.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:alipay_payment_example/main.dart';
 
 void main() {
-  testWidgets('Verify Platform version', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-    // Verify that platform version is retrieved.
-    expect(
-      find.byWidgetPredicate(
-        (Widget widget) => widget is Text &&
-                           widget.data!.startsWith('Running on:'),
-      ),
-      findsOneWidget,
+  setUp(() {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      MethodChannel(MethodChannelAlipayPayment.channelName),
+      (MethodCall methodCall) async {
+        switch (methodCall.method) {
+          case 'getPlatformVersion':
+            return 'Test 1.0';
+          case 'isAlipayInstalled':
+            return true;
+          case 'setEnvironment':
+            return null;
+          default:
+            return null;
+        }
+      },
     );
+  });
+
+  tearDown(() {
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+        MethodChannel(MethodChannelAlipayPayment.channelName),
+        null);
+  });
+
+  testWidgets('Verify app loads', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.pumpAndSettle();
+
+    expect(find.text('支付宝插件示例'), findsAtLeastNWidgets(1));
   });
 }

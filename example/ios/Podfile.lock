@@ -1,0 +1,28 @@
+PODS:
+  - alipay_payment_ios (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - alipay_payment_ios (from `.symlinks/plugins/alipay_payment_ios/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+EXTERNAL SOURCES:
+  alipay_payment_ios:
+    :path: ".symlinks/plugins/alipay_payment_ios/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  alipay_payment_ios: 68a94397bbd99ffb9575328d898f9d5061824290
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
+
+PODFILE CHECKSUM: 82e4868d87297b26f207eea50cd7753dab2effa6
+
+COCOAPODS: 1.16.2

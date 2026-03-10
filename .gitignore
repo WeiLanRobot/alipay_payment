@@ -31,3 +31,6 @@ migrate_working_dir/
 .flutter-plugins
 .flutter-plugins-dependencies
 build/
+
+# 支付宝本地 AAR（若使用 android/libs/）
+android/libs/*.aar

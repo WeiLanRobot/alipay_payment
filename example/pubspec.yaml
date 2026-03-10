@@ -18,15 +18,8 @@ dependencies:
     sdk: flutter
 
   alipay_payment:
-    # When depending on this package from a real application you should use:
-    #   alipay_payment: ^x.y.z
-    # See https://dart.dev/tools/pub/dependencies#version-constraints
-    # The example app is bundled with the plugin so we use a path dependency on
-    # the parent directory to use the current plugin's version.
     path: ../
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
@@ -45,7 +38,11 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
-# The following section is specific to Flutter packages.
+# alipay_payment config (scheme for iOS callback, ios SDK variant)
+alipay_payment:
+  scheme: alipay2021000000000000
+  ios: noutdid  # optional: noutdid or utdid
+
 flutter:
 
   # The following line ensures that the Material Icons font is

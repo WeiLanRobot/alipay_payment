@@ -1,14 +1,10 @@
-// You have generated a new plugin project without specifying the `--platforms`
-// flag. A plugin project with no platform support was generated. To add a
-// platform, run `flutter create -t plugin --platforms <platforms> .` under the
-// same directory. You can also find a detailed instruction on how to add
-// platforms in the `pubspec.yaml` at
-// https://flutter.dev/to/pubspec-plugin-platforms.
+/// 支付宝支付插件
+library;
 
-import 'alipay_payment_platform_interface.dart';
-
-class AlipayPayment {
-  Future<String?> getPlatformVersion() {
-    return AlipayPaymentPlatform.instance.getPlatformVersion();
-  }
-}
+export 'src/alipay_payment_method_channel.dart';
+export 'src/alipay_payment_platform_interface.dart';
+export 'src/alipay_payment_unsafe.dart';
+export 'src/models/alipay_auth_result.dart';
+export 'src/models/alipay_environment.dart';
+export 'src/models/alipay_result.dart';
+export 'src/sign/alipay_sign.dart';
