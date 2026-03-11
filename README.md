@@ -8,7 +8,7 @@ Flutter 支付宝支付插件，支持 iOS、Android 平台。
 - **授权（登录）**：支付宝账号授权，支持 `parseAuthResult()` 解析
 - **沙箱环境**：iOS/Android 均支持 `AlipayEnvironment.sandbox`
 - **检测安装**：`isAlipayInstalled()`
-- **结果返回**：`payResp()` / `authResp()` 返回 Stream，支持多监听
+- **结果返回**：`payResp()` / `authResp()` Stream，或 `payAndWait()` / `authAndWait()` Future
 - **客户端签名**：`unsafePay` / `unsafeAuth`（⚠️ 仅开发测试，生产请用服务端签名）
 - **iOS utdid/noutdid**：可配置避免与阿里系 SDK 冲突
 
@@ -40,7 +40,7 @@ await AlipayPaymentPlatform.instance.setEnvironment(AlipayEnvironment.sandbox);
 // 检查是否安装支付宝
 final installed = await AlipayPaymentPlatform.instance.isAlipayInstalled();
 
-// 先监听结果流，再发起支付/授权
+// 方式一：Stream 监听（适合多次支付/授权）
 AlipayPaymentPlatform.instance.payResp().listen((result) {
   if (result.isSuccess) {
     // 支付成功
@@ -51,6 +51,17 @@ AlipayPaymentPlatform.instance.payResp().listen((result) {
   }
 });
 AlipayPaymentPlatform.instance.authResp().listen((result) { /* 同上 */ });
+await AlipayPaymentPlatform.instance.pay(orderInfo: orderInfoFromServer, ...);
+
+// 方式二：Future 风格（适合单次调用）
+final payResult = await AlipayPaymentPlatform.instance.payAndWait(
+  orderInfo: orderInfoFromServer,
+  urlScheme: 'alipay${yourAppId}',
+);
+final authResult = await AlipayPaymentPlatform.instance.authAndWait(
+  authInfo: authInfoFromServer,
+  urlScheme: 'alipay${yourAppId}',
+);
 
 // 发起支付（会跳转支付宝 App，结果通过 payResp 返回）
 await AlipayPaymentPlatform.instance.pay(

@@ -79,6 +79,9 @@ class MethodChannelAlipayPayment extends AlipayPaymentPlatform {
     AlipayEnvironment? payEnv,
     bool dynamicLaunch = false,
   }) async {
+    if (orderInfo.trim().isEmpty) {
+      throw ArgumentError('orderInfo 不能为空');
+    }
     _ensureMethodCallHandler();
     try {
       final dynamic result = await methodChannel.invokeMethod<dynamic>(
@@ -108,6 +111,9 @@ class MethodChannelAlipayPayment extends AlipayPaymentPlatform {
     String? universalLink,
     bool showPayLoading = true,
   }) async {
+    if (authInfo.trim().isEmpty) {
+      throw ArgumentError('authInfo 不能为空');
+    }
     _ensureMethodCallHandler();
     try {
       final dynamic result = await methodChannel.invokeMethod<dynamic>(

@@ -19,7 +19,6 @@ abstract class AlipayPaymentPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  /// 释放资源（Stream、Handler 等），替换 instance 前会自动调用
   void dispose() {}
 
   Future<String?> getPlatformVersion() {
@@ -41,6 +40,7 @@ abstract class AlipayPaymentPlatform extends PlatformInterface {
     throw UnimplementedError('pay() has not been implemented.');
   }
 
+
   Future<void> auth({
     required String authInfo,
     String? urlScheme,
@@ -58,6 +58,7 @@ abstract class AlipayPaymentPlatform extends PlatformInterface {
     throw UnimplementedError('authResp() has not been implemented.');
   }
 
+  /// 检测是否已安装支付宝客户端
   Future<bool> isAlipayInstalled() {
     throw UnimplementedError('isAlipayInstalled() has not been implemented.');
   }

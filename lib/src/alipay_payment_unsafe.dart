@@ -2,10 +2,7 @@ import 'package:alipay_payment/src/alipay_payment_platform_interface.dart';
 import 'package:alipay_payment/src/models/alipay_environment.dart';
 import 'package:alipay_payment/src/sign/alipay_sign.dart';
 
-/// 客户端签名扩展，与 alipay_kit unsafePay/unsafeAuth 一致
-///
-/// ⚠️ **安全警告**：私钥存放在客户端存在泄露风险，仅适合开发测试或与 alipay_kit 迁移。
-/// 生产环境强烈建议由服务端生成并签名订单，使用 [pay]/[auth] 传入已签名字符串。
+
 extension AlipayPaymentUnsafe on AlipayPaymentPlatform {
   /// 客户端签名支付
   ///

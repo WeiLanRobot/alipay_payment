@@ -72,4 +72,39 @@ void main() {
     expect(results.first.resultStatus, '9000');
     expect(results.first.isSuccess, true);
   });
+
+  test('payAndWait returns AlipayResult', () async {
+    final AlipayResult result = await platform.payAndWait(orderInfo: 'test');
+    expect(result.resultStatus, '9000');
+    expect(result.isSuccess, true);
+    expect(result.resultStatusCode, 9000);
+  });
+
+  test('authAndWait returns AlipayResult', () async {
+    final AlipayResult result = await platform.authAndWait(authInfo: 'test');
+    expect(result.resultStatus, '9000');
+    expect(result.isSuccess, true);
+  });
+
+  test('pay with empty orderInfo throws ArgumentError', () async {
+    expect(
+      () => platform.pay(orderInfo: ''),
+      throwsA(isA<ArgumentError>()),
+    );
+    expect(
+      () => platform.pay(orderInfo: '   '),
+      throwsA(isA<ArgumentError>()),
+    );
+  });
+
+  test('auth with empty authInfo throws ArgumentError', () async {
+    expect(
+      () => platform.auth(authInfo: ''),
+      throwsA(isA<ArgumentError>()),
+    );
+    expect(
+      () => platform.auth(authInfo: '   '),
+      throwsA(isA<ArgumentError>()),
+    );
+  });
 }
