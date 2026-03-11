@@ -31,7 +31,8 @@ class AlipayResult {
     if (map == null || map.isEmpty) {
       return AlipayResult.unknown('无返回数据');
     }
-    final String resultStatus = map['resultStatus']?.toString().trim() ?? '';
+    String resultStatus = map['resultStatus']?.toString().trim() ?? '';
+    resultStatus = resultStatus.replaceAll(RegExp(r'^\{|\}$'), '').trim();
     if (resultStatus.isEmpty) {
       return AlipayResult.unknown('结果格式异常');
     }

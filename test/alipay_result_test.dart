@@ -29,6 +29,17 @@ void main() {
       );
     });
 
+    test('fromMap strips curly braces from resultStatus', () {
+      final result = AlipayResult.fromMap(<String, dynamic>{
+        'resultStatus': '{9000}',
+        'result': null,
+        'memo': null,
+      });
+      expect(result.resultStatus, '9000');
+      expect(result.isSuccess, true);
+      expect(result.resultStatusCode, 9000);
+    });
+
     test('parseAuthResult returns null when not success', () {
       const AlipayResult result = AlipayResult(resultStatus: '6001', memo: '取消');
       expect(result.parseAuthResult(), isNull);

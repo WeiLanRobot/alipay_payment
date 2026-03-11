@@ -127,6 +127,21 @@ class _AlipayDemoPageState extends State<AlipayDemoPage> {
     // 结果通过 authResp 流返回，已在 initState 中监听
   }
 
+  /// 验证 {9000} 格式解析：模拟原生返回带花括号的 resultStatus
+  void _verifyBracesParsing() {
+    final result = AlipayResult.fromMap(<String, dynamic>{
+      'resultStatus': '{9000}',
+      'result': null,
+      'memo': '测试解析',
+    });
+    setState(() => _lastResult =
+        '【{9000} 解析验证】\n'
+        'resultStatus: ${result.resultStatus}\n'
+        'isSuccess: ${result.isSuccess}\n'
+        'resultStatusCode: ${result.resultStatusCode}\n'
+        'memo: ${result.memo}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -231,6 +246,12 @@ class _AlipayDemoPageState extends State<AlipayDemoPage> {
               onPressed: _initPlatform,
               icon: const Icon(Icons.refresh),
               label: const Text('刷新安装状态'),
+            ),
+            const SizedBox(height: 8),
+            OutlinedButton.icon(
+              onPressed: _verifyBracesParsing,
+              icon: const Icon(Icons.bug_report),
+              label: const Text('验证 {9000} 解析'),
             ),
           ],
         ),
