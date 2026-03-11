@@ -1,7 +1,10 @@
 name: alipay_payment
-description: "A new Flutter plugin project."
+description: "Flutter 支付宝支付插件，支持 App 支付、账号授权，兼容 iOS/Android。"
 version: 0.0.2
-homepage:
+homepage: https://github.com/WeiLanRobot/alipay_payment
+repository: https://github.com/WeiLanRobot/alipay_payment
+issue_tracker: https://github.com/WeiLanRobot/alipay_payment/issues
+documentation: https://github.com/WeiLanRobot/alipay_payment#readme
 
 environment:
   sdk: ^3.8.0
