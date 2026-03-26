@@ -1,0 +1,5 @@
+
+enum AlipayEnvironment {
+  production,
+  sandbox,
+}
